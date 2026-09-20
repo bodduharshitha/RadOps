@@ -37,6 +37,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t radops-api:${{ github.sha }} .
 
+      - name: Verify installed setuptools version
+        run: |
+          docker run --rm radops-api:${{ github.sha }} \
+            python -c "import setuptools; print('setuptools:', setuptools.__version__)"
+
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
         with:
