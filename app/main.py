@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from app.models import SecurityEvent, SecurityEventResponse
 
 app = FastAPI(title="RadOps")
