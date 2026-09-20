@@ -1,10 +1,13 @@
-FROM python:3.14-slim
+﻿FROM python:3.14-slim
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir -r requirements.txt \
+    && python -m pip install --no-cache-dir --upgrade \
+        "msgpack>=1.2.1" \
+        "setuptools>=78.1.1"
 
 COPY app ./app
 
